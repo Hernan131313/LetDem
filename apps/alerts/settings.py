@@ -1,0 +1,1 @@
+CACHE_TIMEOUT_FOR_ALERTS = 'alerts__cache_timeout_for_alerts'

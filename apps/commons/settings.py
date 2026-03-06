@@ -1,0 +1,2 @@
+METERS_TO_SHOW_TOO_CLOSE_MODAL = 'commons__meters_to_show_too_close_modal'
+PRECISION_NUMBER_TO_GEOHASH = 'commons__precision_number_to_geohash'

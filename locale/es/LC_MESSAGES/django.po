@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-06 17:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+
+#: apps/accounts/admin.py:21 apps/accounts/admin.py:61
+msgid "Personal info"
+msgstr ""
+
+#: apps/accounts/admin.py:22 apps/accounts/admin.py:62
+msgid "Permissions"
+msgstr ""
+
+#: apps/accounts/admin.py:23 apps/accounts/admin.py:63
+msgid "Important dates"
+msgstr ""
+
+#: apps/accounts/modules/auth/tasks.py:26
+msgid "Confirm your email"
+msgstr "Confirma tu correo electrónico"
+
+#: apps/accounts/modules/auth/tasks.py:50
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+#: apps/commons/exceptions/base.py:8
+msgid "Invalid Request."
+msgstr ""
+
+#: apps/commons/exceptions/base.py:20
+msgid "Invalid coordinates has been provided."
+msgstr ""
+
+#: apps/commons/exceptions/rate_limiting.py:8
+msgid "Resend Max Limit Reached."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:8
+msgid "Invalid Credentials."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:13
+msgid "Invalid Current Password."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:18
+msgid "Repeated Password."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:24
+msgid "Inactive Account."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:29
+msgid "Email Already Exists."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:34
+msgid "Invalid Social Token."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:39
+msgid "Invalid OTP."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:45
+msgid "Account Already Activated."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:51
+msgid "This email does not exist in our system."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:57
+msgid "OTP related to this operation is not validated."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:63
+msgid "This user already has created a car."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:69
+msgid "User does not have a car created."
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:75
+msgid "Social user should reset password through its provider"
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:80
+msgid "Ends time should be greater than Starts time"
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:85
+msgid "Ends and Starts time should be greater than now"
+msgstr ""
+
+#: apps/commons/exceptions/types/accounts.py:90
+msgid "Notification already scheduled in this place"
+msgstr ""
+
+#: apps/commons/exceptions/types/events.py:7
+msgid "Event publication Error."
+msgstr ""
+
+#: apps/commons/exceptions/types/events.py:12
+msgid "Event not found."
+msgstr ""
+
+#: apps/commons/exceptions/types/events.py:17
+msgid "Event feedback already created."
+msgstr ""
+
+#: apps/commons/exceptions/types/events.py:22
+msgid "Event owner cannot send feedback."
+msgstr ""
+
+#: apps/commons/exceptions/types/spaces.py:7
+msgid "Space Published Nearby Recently."
+msgstr ""
+
+#: apps/commons/exceptions/types/spaces.py:12
+msgid "Space not found."
+msgstr ""
+
+#: apps/commons/exceptions/types/spaces.py:17
+msgid "Space feedback already created."
+msgstr ""
+
+#: apps/commons/exceptions/types/spaces.py:22
+msgid "Space owner cannot send feedback."
+msgstr ""

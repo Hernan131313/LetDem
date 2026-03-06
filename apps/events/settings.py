@@ -1,0 +1,3 @@
+EXPIRATION_TIME_FOR_EVENTS_DYNAMIC_PREFERENCE = 'events__expiration_time_for_events'
+POINTS_PER_EVENT_CREATION_DYNAMIC_PREFERENCE = 'events__points_per_event_creation'
+POINTS_PER_EVENT_FEEDBACK_DYNAMIC_PREFERENCE = 'events__points_per_event_feedback'

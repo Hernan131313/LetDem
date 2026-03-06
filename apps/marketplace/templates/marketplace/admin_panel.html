@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panel Marketplace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f6f8;
+            color: #111;
+        }
+        header {
+            margin-bottom: 24px;
+        }
+        h1 {
+            margin: 0 0 8px 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        form p {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+        }
+        form input, form textarea, form select {
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #cfd8dc;
+            font-size: 14px;
+        }
+        button {
+            border: none;
+            border-radius: 6px;
+            padding: 10px 16px;
+            background: #111827;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #eceff1;
+        }
+        .alerts {
+            margin-bottom: 16px;
+        }
+        .alert {
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        .alert-success {
+            background: #e8f5e9;
+            color: #256029;
+        }
+        .alert-error {
+            background: #ffebee;
+            color: #b71c1c;
+        }
+        .lists {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eceff1;
+        }
+        small {
+            color: #546e7a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Panel Marketplace</h1>
+        <p>Administra categorías, tiendas y productos rápidamente sin usar el admin de Django.</p>
+    </header>
+
+    <div class="alerts">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <section class="grid">
+        <div class="card">
+            <h2>Crear categoría</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="create_category">
+                {{ category_form.as_p }}
+                <button type="submit">Guardar categoría</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Crear tienda</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="create_store">
+                {{ store_form.as_p }}
+                <button type="submit">Guardar tienda</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Crear producto</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="create_product">
+                {{ product_form.as_p }}
+                <button type="submit">Guardar producto</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="lists">
+        <div class="card">
+            <h3>Categorías recientes</h3>
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <strong>{{ category.display_name }}</strong>
+                        <small>(slug: {{ category.name }})</small>
+                    </li>
+                {% empty %}
+                    <li>No hay categorías registradas.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Tiendas recientes</h3>
+            <ul>
+                {% for store in stores %}
+                    <li>
+                        <strong>{{ store.name }}</strong>
+                        <small>- {{ store.category.display_name }}</small>
+                    </li>
+                {% empty %}
+                    <li>No hay tiendas registradas.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Productos recientes</h3>
+            <ul>
+                {% for product in products %}
+                    <li>
+                        <strong>{{ product.name }}</strong>
+                        <small>- {{ product.store.name }}</small>
+                    </li>
+                {% empty %}
+                    <li>No hay productos registrados.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

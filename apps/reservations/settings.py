@@ -1,0 +1,2 @@
+MINUTES_BEFORE_CANCEL_RESERVATION = 'reservations__minutes_before_cancel_reservation'
+MINUTES_TO_CANCEL_RESERVATION = 'reservations__minutes_to_cancel_reservation'
