@@ -25,17 +25,16 @@ def reminder_to_confirm_reservation_task(reservation_id: int):
     user = reservation.space.owner
     notification_data = {'page_to_redirect': 'reservation_details'}
     minutes_before_to_notify = global_preferences[MINUTES_BEFORE_CANCEL_RESERVATION]
-    for user_device in user.user_devices.all():
-        if not user.user_preferences.push:
-            break
 
-        device_id = user_device.device_id
-        send_push_notification(
-            device_id,
-            notification_type=REMIND_CONFIRM_RESERVATION_NOTIFICATION,
-            notification_data=notification_data,
-            params={'minutes': minutes_before_to_notify},
-        )
+    if user.user_preferences.push:
+        for user_device in user.user_devices.all():
+            device_id = user_device.device_id
+            send_push_notification(
+                device_id,
+                notification_type=REMIND_CONFIRM_RESERVATION_NOTIFICATION,
+                notification_data=notification_data,
+                params={'minutes': minutes_before_to_notify},
+            )
 
 
 @shared_task
@@ -55,13 +54,12 @@ def cancel_not_confirmed_reservation_task(reservation_id: int):
         logger.info(f'Error cancelling reservation [uuid]: {reservation.uuid.hex}')
         return
 
-    # Send reservation update to the user
     send_refresh_users_event(users=[reservation.space.owner, reservation.reserved_by])
 
     try:
         user_requester = reservation.reserved_by
         notification_data = {'page_to_redirect': 'activities'}
-        if not user_requester.user_preferences.push:
+        if user_requester.user_preferences.push:
             for user_device in user_requester.user_devices.all():
                 device_id = user_device.device_id
                 send_push_notification(

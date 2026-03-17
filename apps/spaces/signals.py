@@ -29,7 +29,8 @@ def space_created_handler(sender, instance: BaseSpace, **kwargs):
     if waffle.switch_is_active('enable_space_image_compression'):
         compress_image_task.delay(instance.pk)
 
-    instance.geohash = generate_coordinates_geohash(instance.latitude, instance.latitude)
+    # ✅ FIX: usar latitud y longitud correctas
+    instance.geohash = generate_coordinates_geohash(instance.latitude, instance.longitude)
     instance.save()
 
     refresh_maps.send(None, instance=instance)

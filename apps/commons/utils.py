@@ -57,9 +57,16 @@ def generate_confirmation_code():
     return str(secrets.randbelow(10**6)).zfill(6)  # Ensures 6 digits, zero-padded
 
 
-def generate_coordinates_geohash(lat: str, lng: str):
+def generate_coordinates_geohash(lat: float, lng: float) -> str:
+    """
+    Genera un geohash estable a partir de lat/lng.
+    - Redondea coordenadas para evitar variaciones flotantes.
+    - Usa precisión fija definida en preferencias globales.
+    """
     precision = global_preferences[PRECISION_NUMBER_TO_GEOHASH]
-    return geohash.encode(float(lat), float(lng), precision=precision)
+    lat = round(float(lat), 6)   # normalización
+    lng = round(float(lng), 6)   # normalización
+    return geohash.encode(lat, lng, precision=precision)
 
 
 def send_refresh_users_event(users: list):
